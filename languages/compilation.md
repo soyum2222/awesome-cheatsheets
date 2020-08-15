@@ -13,3 +13,15 @@
     可用于乘法计算
     leal a(b, c, d), EAX # EAX=a+b+(c*d)
     
+
+## 指令 mov:
+    mov 指令用于在寄存器和寄存器，寄存器和内存之间交换数据。
+    指令格式：MOV des,src 或 MOV src,des (取决于具体汇编版本),src 和 des 中必须有一个是寄存器，下面都以LEA src,des举例
+    
+    ex:
+    
+    movl %eax   ,%edx   # dex = eax  等价于  movl eax    , edx
+    movl $0x123 ,%edx   # edx = 0x123 等价于  movl $0x123 , edx
+    movl 0x123  ,%edx   # edx = *(*int32)0x123
+    movl (%ebx) ,%edx   # edx = *(*int32)ebx
+    movl 4(%ebx),%edx   # edx = *(*int32)(ebx+4)
