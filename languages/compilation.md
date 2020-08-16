@@ -20,8 +20,14 @@
     
     ex:
     
-    movl %eax   ,%edx   # dex = eax  等价于  movl eax    , edx
+    movl %eax   ,%edx   # dex = eax   等价于  movl eax    , edx
     movl $0x123 ,%edx   # edx = 0x123 等价于  movl $0x123 , edx
     movl 0x123  ,%edx   # edx = *(*int32)0x123
     movl (%ebx) ,%edx   # edx = *(*int32)ebx
     movl 4(%ebx),%edx   # edx = *(*int32)(ebx+4)
+
+    关于后缀：
+    movb #完成1个字节的复制
+    movw #完成2个字节的复制
+    movl #完成4个字节的复制
+    movq #完成8个字节的复制
