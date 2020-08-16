@@ -31,3 +31,28 @@
     movw #完成2个字节的复制
     movl #完成4个字节的复制
     movq #完成8个字节的复制
+    
+ ## 指令 PUSH POP CALL RET
+    pushl %eax      #   把EAX的内容存放到esp指向的内存位置中，并且esp减小4（根据不同的平台，大端或者小端对应是‘减小’或者是‘增大’，根据不同的平台64位或者32为对应‘8’和‘4’）
+                    #   等价于   
+                    #   subl $4,%esp  
+                    #   movl %eax,(%esp)
+                
+    pop %eax        #   把esp指向的内存位置中的内容，移动到eax中，并且esp增大4（根据不同的平台，大端或者小端对应是‘减小’或者是‘增大’，根据不同的平台64位或者32为对应‘8’和‘4’）
+                    #   等价于
+                    #   movl (%esp),%eax
+                    #   addl $4,%esp
+               
+    call funcname   #   调用名字为‘funcname’ 的方法。先PUSH存储当前的IP的值，把IP寄存器的值指向funcname方法所在的内存地址。
+                    #   等价于
+                    #   pushl %eip
+                    #   movl $funcname,%eip
+                    
+    ret             #   返回方法调用者。从esp的位子中取出caller的ip的值
+                    #   等价于
+                    #   popl %eip 
+                    
+                
+    
+    
+
